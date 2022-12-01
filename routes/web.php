@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // php artisan serve
-Route::get('/', function () {
-     // resources/views/welcome.blade.php
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/product/{id}/{name}', function ($product_id, $pro_name) {
     // resources/views/about.blade.php
