@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +15,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 // php artisan serve
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/about-us.html', [HomeController::class, 'about'])->name('home.about');
 
-Route::get('/product/{id}/{name}', function ($product_id, $pro_name) {
-    // resources/views/about.blade.php
-    return view('about', compact('product_id','pro_name'));
-    // return view('about',[
-    //     'pro_id' => $product_id
-    // ]);
-    // return view('about')->with('product_id', $product_id);
+Route::group(['prefix' => ''], function() {
+    Route::get('/', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/about-us', [HomeController::class, 'about'])->name('home.about');
 });
 
-Route::get('ten_route', function() {
-    return view('welcome');
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 });
