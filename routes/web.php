@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 */
 // php artisan serve
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/about-us.html', [HomeController::class, 'about'])->name('home.about');
 
 Route::get('/product/{id}/{name}', function ($product_id, $pro_name) {
     // resources/views/about.blade.php

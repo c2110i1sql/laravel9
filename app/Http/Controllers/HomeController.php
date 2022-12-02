@@ -12,4 +12,9 @@ class HomeController extends Controller
         // echo 'HomeController->index';
         return view('home', compact('cats'));
     }
+
+    public function about()
+    {
+        return view('about');
+    }
 }
