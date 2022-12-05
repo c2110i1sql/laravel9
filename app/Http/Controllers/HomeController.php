@@ -1,6 +1,7 @@
 <?php 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -16,5 +17,15 @@ class HomeController extends Controller
     public function about()
     {
         return view('about');
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function check_login(Request $req)
+    {
+        dd ($req->email, $req->password);
     }
 }

@@ -12,4 +12,6 @@ class Category extends Model
     use HasFactory;
     
     protected $table = 'category';
+
+    protected $fillable = ['name','status'];
 }

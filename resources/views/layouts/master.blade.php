@@ -36,6 +36,9 @@
                             <a class="dropdown-item" href="#">Action 2</a>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home.login') }}">Login</a>
+                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -45,8 +48,7 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h2>Nội dung</h2>
+    <div class="container py-5">
         @yield('main')
     </div>
 
