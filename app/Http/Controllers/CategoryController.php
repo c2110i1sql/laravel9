@@ -70,4 +70,10 @@ class CategoryController extends Controller
         $cat->update($form_data); // INSERT INTO category.....
         return redirect()->route('category.index');
     }
+
+    public function delete(Category $cat)
+    {
+        $cat->delete();
+        return redirect()->route('category.index');
+    }
 }

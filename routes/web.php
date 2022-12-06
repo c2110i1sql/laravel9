@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/edit/{cat}', [CategoryController::class, 'edit'])->name('category.edit');
 
         Route::put('/update/{cat}', [CategoryController::class, 'update'])->name('category.update');
+        
+        Route::delete('/delete/{cat}', [CategoryController::class, 'delete'])->name('category.delete');
 
     });
 
