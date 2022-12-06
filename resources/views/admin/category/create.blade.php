@@ -11,6 +11,9 @@
     <div class="form-group">
         <label for="">Tên danh mục</label>
         <input type="text" class="form-control" name="name" placeholder="Input field">
+        @error('name') 
+         <small style="color: red; font-style: italic">{{$message}}</small>
+        @enderror
     </div>
 
     

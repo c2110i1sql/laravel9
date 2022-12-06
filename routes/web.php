@@ -34,7 +34,11 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
 
         Route::post('/create', [CategoryController::class, 'store']);
-    
+
+        Route::get('/edit/{cat}', [CategoryController::class, 'edit'])->name('category.edit');
+
+        Route::put('/update/{cat}', [CategoryController::class, 'update'])->name('category.update');
+
     });
 
 });

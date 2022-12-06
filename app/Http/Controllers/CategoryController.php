@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $cats = Category::paginate(5); // SELECT * FROM category
+        $cats = Category::orderBy('id','DESC')->paginate(5); // SELECT * FROM category
         // dd ($data);
         // echo 'HomeController->index';
         return view('admin.category.index', compact('cats'));
@@ -21,9 +21,53 @@ class CategoryController extends Controller
 
     public function store(Request $req)
     {
+        $req->validate([
+            'name' => 'required|unique:category|min:3|max:100'
+        ], [
+            'name.required' => 'Tên danh mục không để trống',
+            'name.unique' => 'Tên danh mục đã được sử dụng, chọn tên khác',
+            'name.min' => 'Tên danh mục tối thiểu là 3 ký tự',
+            'name.max' => 'Tên danh mục tối đa là 100 ký tự',
+        ]);
+
         $form_data = $req->all('name','status');
 
         Category::create($form_data); // INSERT INTO category.....
+        return redirect()->route('category.index');
+    }
+
+    public function edit(Category $cat)
+    {
+        // $cat = Category::find($id); // select * from category where id = $id
+        // if ($cat) {
+        //     return view('admin.category.edit', compact('cat'));
+        // } else {
+        //     return abort(404); // 405, 419, 403, 500
+        // }
+        return view('admin.category.edit', compact('cat'));
+        
+    }
+
+    public function update(Request $req, Category $cat)
+    {
+        $req->validate([
+            // 'name' => 'required|min:3|max:100|unique:category,name,'.$cat->id,
+            'name' => [
+                'required',
+                'min:3',
+                'max:100',
+                'unique:category,name,'.$cat->id
+            ]
+        ], [
+            'name.required' => 'Tên danh mục không để trống',
+            'name.unique' => 'Tên danh mục đã được sử dụng, chọn tên khác',
+            'name.min' => 'Tên danh mục tối thiểu là 3 ký tự',
+            'name.max' => 'Tên danh mục tối đa là 100 ký tự',
+        ]);
+
+        $form_data = $req->all('name','status');
+
+        $cat->update($form_data); // INSERT INTO category.....
         return redirect()->route('category.index');
     }
 }

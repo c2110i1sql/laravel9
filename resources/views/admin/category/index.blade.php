@@ -10,6 +10,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Status</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,9 @@
             <td>{{ $cat->id }}</td>
             <td>{{ $cat->name }}</td>
             <td>{{ $cat->status == 0 ? 'Tạm ẩn' : 'Hiển thị' }}</td>
+            <td>
+                <a href="{{route('category.edit', $cat->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+            </td>
         </tr>
         @endforeach
     </tbody>
