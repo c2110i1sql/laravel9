@@ -3,7 +3,19 @@
 @section('title','Quản lý danh mục')
 
 @section('main')
-<a href="{{ route('category.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Thêm mới</a>
+
+<form action="" method="GET" class="form-inline" role="form">
+
+    <div class="form-group">
+        <input name="keyword" class="form-control" style="width:350px" placeholder="Input keyword">
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+    <a href="{{ route('category.create')}}" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Thêm mới</a>
+</form>
+<hr>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -32,5 +44,5 @@
     </tbody>
 </table>
 <hr>
-{{$cats->links()}}
+{{$cats->appends(request()->all())->links()}}
 @stop()

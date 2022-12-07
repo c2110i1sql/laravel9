@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $req)
     {
         $cats = Category::orderBy('id','DESC')->paginate(5); // SELECT * FROM category
-        // dd ($data);
-        // echo 'HomeController->index';
+
+        if ($req->keyword) {
+            $cats = Category::where('name','like','%'.$req->keyword.'%')
+                    ->orderBy('id','DESC')
+                    ->paginate(5); // SELECT * FROM category
+        }
+
         return view('admin.category.index', compact('cats'));
     }
 
