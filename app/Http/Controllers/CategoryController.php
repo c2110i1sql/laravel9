@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryStoreRerquest;
+use App\Http\Requests\CategoryUpdateRerquest;
 
 class CategoryController extends Controller
 {
@@ -32,7 +34,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -41,17 +43,8 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $req)
+    public function store(CategoryStoreRerquest $req)
     {
-        $req->validate([
-            'name' => 'required|unique:category|min:3|max:100'
-        ], [
-            'name.required' => 'Tên danh mục không để trống',
-            'name.unique' => 'Tên danh mục đã được sử dụng, chọn tên khác',
-            'name.min' => 'Tên danh mục tối thiểu là 3 ký tự',
-            'name.max' => 'Tên danh mục tối đa là 100 ký tự',
-        ]);
-
         $form_data = $req->all('name','status');
 
         Category::create($form_data); // INSERT INTO category.....
@@ -88,26 +81,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $req, Category $category)
+    public function update(CategoryUpdateRerquest $req, Category $category)
     {
-        $req->validate([
-            // 'name' => 'required|min:3|max:100|unique:category,name,'.$cat->id,
-            'name' => [
-                'required',
-                'min:3',
-                'max:100',
-                'unique:category,name,'.$category->id
-            ]
-        ], [
-            'name.required' => 'Tên danh mục không để trống',
-            'name.unique' => 'Tên danh mục đã được sử dụng, chọn tên khác',
-            'name.min' => 'Tên danh mục tối thiểu là 3 ký tự',
-            'name.max' => 'Tên danh mục tối đa là 100 ký tự',
-        ]);
-
         $form_data = $req->all('name','status');
 
-        $cat->update($form_data); // INSERT INTO categ
+        $category->update($form_data); // INSERT INTO categ
+        return redirect()->route('category.index');
     }
 
     /**

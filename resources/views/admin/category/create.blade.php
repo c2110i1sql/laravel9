@@ -4,7 +4,7 @@
 
 @section('main')
 
-<form action="" method="POST" role="form">
+<form action="{{route('category.store')}}" method="POST" role="form">
     @csrf
     <legend>Form title</legend>
 
