@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Category;
@@ -7,11 +6,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $req)
     {
         $cats = Category::orderBy('id','DESC')->paginate(5); // SELECT * FROM category
@@ -25,22 +19,11 @@ class CategoryController extends Controller
         return view('admin.category.index', compact('cats'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create ()
     {
-        //
+        return view('admin.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $req)
     {
         $req->validate([
@@ -58,37 +41,19 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
+    public function edit(Category $cat)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-        $cat = $category;
+        // $cat = Category::find($id); // select * from category where id = $id
+        // if ($cat) {
+        //     return view('admin.category.edit', compact('cat'));
+        // } else {
+        //     return abort(404); // 405, 419, 403, 500
+        // }
         return view('admin.category.edit', compact('cat'));
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $req, Category $category)
+    public function update(Request $req, Category $cat)
     {
         $req->validate([
             // 'name' => 'required|min:3|max:100|unique:category,name,'.$cat->id,
@@ -96,7 +61,7 @@ class CategoryController extends Controller
                 'required',
                 'min:3',
                 'max:100',
-                'unique:category,name,'.$category->id
+                'unique:category,name,'.$cat->id
             ]
         ], [
             'name.required' => 'Tên danh mục không để trống',
@@ -107,18 +72,13 @@ class CategoryController extends Controller
 
         $form_data = $req->all('name','status');
 
-        $cat->update($form_data); // INSERT INTO categ
+        $cat->update($form_data); // INSERT INTO category.....
+        return redirect()->route('category.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
+    public function delete(Category $cat)
     {
-        $category->delete();
+        $cat->delete();
         return redirect()->route('category.index');
     }
 }

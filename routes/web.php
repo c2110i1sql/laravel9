@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,21 +27,28 @@ Route::group(['prefix' => ''], function() {
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    
+    Route::resources([
+        'category' => CategoryController::class,
+        'product' => ProductController::class,
+    ]);
 
-    Route::group(['prefix' => 'category'], function() {
+    // Route::resource('category', CategoryController::class);
+    // Route::resource('product', ProductController::class);
+    // Route::group(['prefix' => 'category'], function() {
         
-        Route::get('/', [CategoryController::class, 'index'])->name('category.index');
+    //     Route::get('/', [CategoryController::class, 'index'])->name('category.index');
 
-        Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+    //     Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
 
-        Route::post('/create', [CategoryController::class, 'store']);
+    //     Route::post('/create', [CategoryController::class, 'store']);
 
-        Route::get('/edit/{cat}', [CategoryController::class, 'edit'])->name('category.edit');
+    //     Route::get('/edit/{cat}', [CategoryController::class, 'edit'])->name('category.edit');
 
-        Route::put('/update/{cat}', [CategoryController::class, 'update'])->name('category.update');
+    //     Route::put('/update/{cat}', [CategoryController::class, 'update'])->name('category.update');
         
-        Route::delete('/delete/{cat}', [CategoryController::class, 'delete'])->name('category.delete');
+    //     Route::delete('/delete/{cat}', [CategoryController::class, 'delete'])->name('category.delete');
 
-    });
+    // });
 
 });
