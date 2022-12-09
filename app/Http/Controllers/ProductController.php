@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,9 +13,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
-        //
+        $products = Product::orderBy('id','DESC')->paginate(); // SELECT * FROM category
+
+        if ($req->keyword) {
+            $products = Product::where('name','like','%'.$req->keyword.'%')
+                    ->orderBy('id','DESC')
+                    ->paginate(); // SELECT * FROM products
+        }
+
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -24,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $cats = Category::orderBy('name','ASC')->get(); // SELECT * FROM category
+        return view('admin.product.create', compact('cats'));
     }
 
     /**
@@ -35,7 +45,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+            'price' => 'required|numeric|min:10000',
+            'sale_price' => 'required|numeric|lte:price',
+            'upload' => 'required|mimes:jpeg,jpg,png,gif'
+        ]);
+
+        $form_data = $request->only('name','price','sale_price','status','content','category_id');
+        $file_name = $request->upload->getClientOriginalName();
+        $request->upload->move(public_path('uploads'), $file_name);
+        $form_data['image'] = $file_name;
+        Product::create($form_data);
+        return redirect()->route('product.index');
+        // dd (public_path());
+        // dd ($form_data);
     }
 
     /**
@@ -57,7 +82,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $cats = Category::orderBy('name','ASC')->get(); // SELECT * FROM category
+        return view('admin.product.edit', compact('cats','product'));
     }
 
     /**
@@ -69,7 +95,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+            'price' => 'required|numeric|min:10000',
+            'sale_price' => 'required|numeric|lte:price',
+            'upload' => 'mimes:jpeg,jpg,png,gif'
+        ]);
+
+        $form_data = $request->only('name','price','sale_price','status','content','category_id');
+        
+        if ($request->has('upload')) {
+            $file_name = $request->upload->getClientOriginalName();
+            $request->upload->move(public_path('uploads'), $file_name);
+            $form_data['image'] = $file_name;
+        }
+       
+        $product->update($form_data);
+        return redirect()->route('product.index');
     }
 
     /**
@@ -80,6 +123,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('product.index');
     }
 }
