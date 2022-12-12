@@ -16,14 +16,7 @@ class CategoryController extends Controller
      */
     public function index(Request $req)
     {
-        $cats = Category::orderBy('id','DESC')->paginate(5); // SELECT * FROM category
-
-        if ($req->keyword) {
-            $cats = Category::where('name','like','%'.$req->keyword.'%')
-                    ->orderBy('id','DESC')
-                    ->paginate(5); // SELECT * FROM category
-        }
-
+        $cats = Category::search(10); // SELECT * FROM category
         return view('admin.category.index', compact('cats'));
     }
 
@@ -47,8 +40,13 @@ class CategoryController extends Controller
     {
         $form_data = $req->all('name','status');
 
-        Category::create($form_data); // INSERT INTO category.....
-        return redirect()->route('category.index');
+        try {
+            Category::create($form_data);
+            return redirect()->route('category.index')->with('yes', 'Thêm mới thành công');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('no', 'Thêm mới không thành công');
+        } 
+       
     }
 
     /**
@@ -85,8 +83,14 @@ class CategoryController extends Controller
     {
         $form_data = $req->all('name','status');
 
-        $category->update($form_data); // INSERT INTO categ
-        return redirect()->route('category.index');
+        
+        
+        try {
+            $category->update($form_data);
+            return redirect()->route('category.index')->with('yes', 'Cập nhật thành công');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('no', 'Cập nhậtkhông thành công');
+        } 
     }
 
     /**
@@ -97,7 +101,17 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        return redirect()->route('category.index');
+        if ($category->products->count() > 0) {
+            return redirect()->back()->with('no', 'Xóa không thành công, danh mục đang có sản phẩm');
+        } else {
+            try {
+                $category->delete();
+                return redirect()->route('category.index')->with('yes', 'Xóa thành công');
+            } catch (\Throwable $th) {
+                return redirect()->back()->with('no', 'Xóa không thành công');
+            } 
+        }
+        
+        
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\UpperCase;
 
 class CategoryStoreRerquest extends FormRequest
 {
@@ -24,7 +25,8 @@ class CategoryStoreRerquest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:categories|min:3|max:100'
+            'name' => ['required','unique:categories','min:3','max:100', new UpperCase]
+            // 'name' => 'required|unique:categories|min:3|max:100|new '
         ];
     }
 
@@ -37,4 +39,6 @@ class CategoryStoreRerquest extends FormRequest
             'name.max' => 'Tên danh mục tối đa là 100 ký tự',
         ];
     }
+
+
 }
