@@ -31,6 +31,10 @@ Route::post('/admin/login', [AdminController::class, 'check_login']);
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::put('/profile', [AdminController::class, 'update_profile']);
+    Route::get('/change_password', [AdminController::class, 'change_password'])->name('admin.change_password');
+    Route::put('/change_password', [AdminController::class, 'update_password']);
     
     Route::resources([
         'category' => CategoryController::class,
