@@ -1,99 +1,129 @@
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="zxx">
+
+<!-- Mirrored from weblearnbd.net/tphtml/orfarm/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Dec 2022 06:54:51 GMT -->
 
 <head>
-    <title>@yield('title')</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Orfarm - Multipurpose eCommerce HTML5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-        @yield('css')
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{url('')}}/assets/img/logo/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{url('')}}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/animate.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/swiper-bundle.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/slick.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/spacing.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/nice-select.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/icon-dukamarket.css">
+    <link rel="stylesheet" href="{{url('')}}/assets/css/main.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                aria-label="Toggle navigation"></button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home.index') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home.about') }}">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            <a class="dropdown-item" href="#">Action 1</a>
-                            <a class="dropdown-item" href="#">Action 2</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home.login') }}">Login</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
 
-    <div class="container py-5">
+    <!-- Scroll-top -->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <i class="icon-chevrons-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+
+    @include('layouts.header')
+
+    <main>
         @yield('main')
-    </div>
 
-    <footer class="bg-dark text-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Footer title</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt, ipsum dolor? Itaque
-                        exercitationem, hic incidunt a nisi ullam blanditiis porro odit minima quaerat maxime nulla
-                        cumque enim. Adipisci, explicabo eos.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Footer title</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt, ipsum dolor? Itaque
-                        exercitationem, hic incidunt a nisi ullam blanditiis porro odit minima quaerat maxime nulla
-                        cumque enim. Adipisci, explicabo eos.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Footer title</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt, ipsum dolor? Itaque
-                        exercitationem, hic incidunt a nisi ullam blanditiis porro odit minima quaerat maxime nulla
-                        cumque enim. Adipisci, explicabo eos.
-                    </p>
+        <!-- feature-area-start -->
+        <section class="feature-area mainfeature__bg grey-bg pt-50 pb-40"
+            data-background="{{url('')}}/assets/img/shape/footer-shape-1.svg">
+            <div class="container">
+                <div class="mainfeature__border pb-15">
+                    <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2">
+                        <div class="col">
+                            <div class="mainfeature__item text-center mb-30">
+                                <div class="mainfeature__icon">
+                                    <img src="{{url('')}}/assets/img/icon/feature-icon-1.svg" alt="">
+                                </div>
+                                <div class="mainfeature__content">
+                                    <h4 class="mainfeature__title">Fast Delivery</h4>
+                                    <p>Across West & East India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mainfeature__item text-center mb-30">
+                                <div class="mainfeature__icon">
+                                    <img src="{{url('')}}/assets/img/icon/feature-icon-2.svg" alt="">
+                                </div>
+                                <div class="mainfeature__content">
+                                    <h4 class="mainfeature__title">safe payment</h4>
+                                    <p>100% Secure Payment</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mainfeature__item text-center mb-30">
+                                <div class="mainfeature__icon">
+                                    <img src="{{url('')}}/assets/img/icon/feature-icon-3.svg" alt="">
+                                </div>
+                                <div class="mainfeature__content">
+                                    <h4 class="mainfeature__title">Online Discount</h4>
+                                    <p>Add Multi-buy Discount </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mainfeature__item text-center mb-30">
+                                <div class="mainfeature__icon">
+                                    <img src="{{url('')}}/assets/img/icon/feature-icon-4.svg" alt="">
+                                </div>
+                                <div class="mainfeature__content">
+                                    <h4 class="mainfeature__title">Help Center</h4>
+                                    <p>Dedicated 24/7 Support </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mainfeature__item text-center mb-30">
+                                <div class="mainfeature__icon">
+                                    <img src="{{url('')}}/assets/img/icon/feature-icon-5.svg" alt="">
+                                </div>
+                                <div class="mainfeature__content">
+                                    <h4 class="mainfeature__title">Curated items</h4>
+                                    <p>From Handpicked Sellers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-      @yield('js')
+        </section>
+        <!-- feature-area-end -->
+    </main>
+    @include('layouts.footer')
+    <!-- JS here -->
+    <script src="{{url('')}}/assets/js/jquery.js"></script>
+    <script src="{{url('')}}/assets/js/waypoints.js"></script>
+    <script src="{{url('')}}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url('')}}/assets/js/swiper-bundle.js"></script>
+    <script src="{{url('')}}/assets/js/nice-select.js"></script>
+    <script src="{{url('')}}/assets/js/slick.js"></script>
+    <script src="{{url('')}}/assets/js/magnific-popup.js"></script>
+    <script src="{{url('')}}/assets/js/counterup.js"></script>
+    <script src="{{url('')}}/assets/js/wow.js"></script>
+    <script src="{{url('')}}/assets/js/isotope-pkgd.js"></script>
+    <script src="{{url('')}}/assets/js/imagesloaded-pkgd.js"></script>
+    <script src="{{url('')}}/assets/js/countdown.js"></script>
+    <script src="{{url('')}}/assets/js/ajax-form.js"></script>
+    <script src="{{url('')}}/assets/js/meanmenu.js"></script>
+    <script src="{{url('')}}/assets/js/main.js"></script>
 </body>
 
 </html>
