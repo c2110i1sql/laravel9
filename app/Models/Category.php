@@ -28,6 +28,6 @@ class Category extends Model
 
     public function scopeIsActive($query)
     {
-        return $this->where('status',0);
+        return $this->where('status',1)->orderBy('id','DESC');
     }
 }

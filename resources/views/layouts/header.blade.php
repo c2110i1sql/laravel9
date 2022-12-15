@@ -41,15 +41,9 @@
                                     <li class="has-dropdown">
                                         <a href="">Shop</a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{route('home.category')}}">Shop Location One</a></li>
-                                            <li><a href="shop-location-2.html">Shop Location Two</a></li>
-                                            <li><a href="faq.html">FAQs</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="cart.html">Cart Page</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="log-in.html">Sign In</a></li>
-                                            <li><a href="comming-soon.html">Coming soon</a></li>
-                                            <li><a href="404.html">Page 404</a></li>
+                                            @foreach($cats as $cat)
+                                            <li><a href="{{route('home.category', $cat->id)}}">{{$cat->name}}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="{{route('home.about')}}">About Us</a></li>

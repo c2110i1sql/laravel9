@@ -9,11 +9,11 @@
             <div class="col-lg-12">
                 <div class="tp-breadcrumb__content">
                     <div class="tp-breadcrumb__list">
-                        <span class="tp-breadcrumb__active"><a href="index-2.html">Home</a></span>
+                        <span class="tp-breadcrumb__active"><a href="{{route('home.index')}}">Home</a></span>
                         <span class="dvdr">/</span>
-                        <span class="tp-breadcrumb__active"><a href="index-2.html">Breakfast & Dairy</a></span>
+                        <span class="tp-breadcrumb__active"><a href="{{route('home.category', $product->cat->id)}}">{{$product->cat->name}}</a></span>
                         <span class="dvdr">/</span>
-                        <span>Fresh Mangosteen 100% Organic From VietNamese</span>
+                        <span>{{$product->name}}</span>
                     </div>
                 </div>
             </div>
@@ -30,21 +30,7 @@
                 <div class="tpdetails__area mr-60 pb-30">
                     <div class="tpdetails__product mb-30">
                         <div class="tpdetails__title-box">
-                            <h3 class="tpdetails__title">Pure Irish Organic 4 Beef Quarter Pounder Burgers - 1Kg</h3>
-                            <ul class="tpdetails__brand">
-                                <li> Brands: <a href="#">ORFARM</a> </li>
-                                <li>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <i class="icon-star_outline1"></i>
-                                    <b>02 Reviews</b>
-                                </li>
-                                <li>
-                                    SKU: <span>ORFARMVE005</span>
-                                </li>
-                            </ul>
+                            <h3 class="tpdetails__title">{{$product->name}}</h3>
                         </div>
                         <div class="tpdetails__box">
                             <div class="row">
@@ -53,7 +39,7 @@
                                         <div class="tab-content" id="nav-tabContents">
                                             <div class="tab-pane fade show active w-img" id="nav-home" role="tabpanel"
                                                 aria-labelledby="nav-home-tab" tabindex="0">
-                                                <img src="assets/img/product/product-details-1.png" alt="">
+                                                <img src="{{url('uploads')}}/{{$product->image}}" alt="">
                                                 <div class="tpproduct__info bage">
                                                     <span class="tpproduct__info-hot bage__hot">HOT</span>
                                                 </div>

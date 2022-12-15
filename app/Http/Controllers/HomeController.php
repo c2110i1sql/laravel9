@@ -9,8 +9,9 @@ class HomeController extends Controller
     public function index()
     {
         $newProducts = Product::orderBy('id','DESC')->limit(8)->get();
+        $randomProducts = Product::inRandomOrder()->limit(8)->get();
         $saleProducts = Product::orderBy('sale_price','ASC')->where('sale_price','>',0)->limit(8)->get();
-        return view('home', compact('newProducts','saleProducts'));
+        return view('home', compact('newProducts','saleProducts','randomProducts'));
     }
 
     public function about()
@@ -28,12 +29,18 @@ class HomeController extends Controller
         dd ($req->email, $req->password);
     }
 
-    public function category()
+    public function category(Category $cat)
     {
-        return view('category');
+        $products = $cat->products()->paginate(12);
+        return view('category', compact('cat','products'));
     }
     public function contact()
     {
         return view('contact');
+    }
+
+    public function productDetail(Product $product)
+    {
+        return view('product-detail', compact('product'));
     }
 }
