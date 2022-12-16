@@ -110,7 +110,7 @@
     </div>
 </section>
 <!-- category-area-end -->
-<x-swiper-product title="New Product" :data="$newProducts"/>
+<x-list-product title="New Product" :data="$newProducts"/>
 <x-swiper-product title="Random Product" :data="$randomProducts"/>
 
 

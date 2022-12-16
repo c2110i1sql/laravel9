@@ -26,6 +26,7 @@ Route::group(['prefix' => ''], function() {
     Route::get('/category/{cat}', [HomeController::class, 'category'])->name('home.category');
     Route::get('/product-detail/{product}', [HomeController::class, 'productDetail'])->name('home.productDetail');
     Route::get('/login', [HomeController::class, 'login'])->name('home.login');
+    Route::get('/profile', [HomeController::class, 'profile'])->name('home.profile')->middleware('cus');
     Route::post('/login', [HomeController::class, 'check_login']);
 });
 

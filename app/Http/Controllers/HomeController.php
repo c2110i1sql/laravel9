@@ -26,8 +26,30 @@ class HomeController extends Controller
 
     public function check_login(Request $req)
     {
-        dd ($req->email, $req->password);
+       $form_data = $req->only('email','password');
+       $check = Auth::guard('cus')->attempt($form_data, $req->has('remember'));
+
+       if ($check) {
+            return redirect()->route('home.index')->with('yes', 'Chào mừng trở lại');
+       }
+
+       return redirect()->back()->with('no', 'Tài khoản hoặc mật khảu không chính xác');
+
     }
+
+    public function logout()
+    {
+        Auth::guard('cus')->logout();
+        return redirect()->route('home.login')->with('yes', 'Đăng xuất thành công, vui lòng đăng nhập lại');
+    }
+
+    public function profile()
+    {
+        $auth = Auth::guard('cus')->user();
+        // dd ($auth);
+        return view('home.profile', compact('auth'));
+    }
+ 
 
     public function category(Category $cat)
     {
