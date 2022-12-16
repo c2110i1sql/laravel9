@@ -7522,7 +7522,7 @@ p.checkout-coupon input[type=text]:focus {
 .tptrack__id form, .tptrack__email form {
   position: relative;
 }
-.tptrack__id form input, .tptrack__email form input {
+.tptrack__id input, .tptrack__email input {
   width: 100%;
   height: 60px;
   border: none;
@@ -7530,28 +7530,28 @@ p.checkout-coupon input[type=text]:focus {
   padding: 10px 60px;
   border-radius: 6px;
 }
-.tptrack__id form input::-webkit-input-placeholder, .tptrack__email form input::-webkit-input-placeholder {
+.tptrack__id input::-webkit-input-placeholder, .tptrack__email input::-webkit-input-placeholder {
   font-family: var(--tp-ff-jost);
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #8A94AC;
 }
-.tptrack__id form input:-moz-placeholder, .tptrack__email form input:-moz-placeholder {
+.tptrack__id input:-moz-placeholder, .tptrack__email input:-moz-placeholder {
   font-family: var(--tp-ff-jost);
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #8A94AC;
 }
-.tptrack__id form input::-moz-placeholder, .tptrack__email form input::-moz-placeholder {
+.tptrack__id input::-moz-placeholder, .tptrack__email input::-moz-placeholder {
   font-family: var(--tp-ff-jost);
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #8A94AC;
 }
-.tptrack__id form input:-ms-input-placeholder, .tptrack__email form input:-ms-input-placeholder {
+.tptrack__id input:-ms-input-placeholder, .tptrack__email input:-ms-input-placeholder {
   font-family: var(--tp-ff-jost);
   font-weight: 400;
   font-size: 14px;

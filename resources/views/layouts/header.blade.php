@@ -12,9 +12,13 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="header__top-right d-flex align-items-center">
                         <div class="header__top-link">
-                            <a href="#">Store Location</a>
-                            <a href="#">Order Tracking</a>
-                            <a href="faq.html">FAQs</a>
+                            @if (auth('cus')->check())
+                            <a href="{{route('home.profile')}}">Hi {{auth('cus')->user()->name}}</a>
+                            <a href="{{route('home.logout')}}">Logout</a>
+                            @else 
+                            <a href="{{route('home.login')}}">Login/ Regiser</a>
+                   
+                            @endif
                         </div>
 
                     </div>

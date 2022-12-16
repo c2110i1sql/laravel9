@@ -1,8 +1,10 @@
 <?php 
 namespace App\Http\Controllers;
+use App\Models\Customer;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -37,6 +39,15 @@ class HomeController extends Controller
 
     }
 
+    public function check_register(Request $req)
+    {
+        $form_data = $req->only('name','email','gender','address','phone');
+        $form_data['password'] = bcrypt($req->password);
+        if (Customer::create($form_data)) {
+            return redirect()->route('home.login')->with('yes', 'Đăng ký thành công, bạn có thể đăng nhập');
+        }
+        return redirect()->back()->with('no', 'Đăng ký không thành công, hãy thử đăng ký lại thông tin');
+    }
     public function logout()
     {
         Auth::guard('cus')->logout();
