@@ -209,6 +209,7 @@
                             <small class="label pull-right bg-yellow">12</small>
                         </a>
                     </li>
+                    @canany(['admin','product'])
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-th"></i> <span>QL Sản phẩm</span> <i
@@ -219,7 +220,8 @@
                             <li><a href="{{route('product.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                         </ul>
                     </li>
-
+                    @endcanany
+                    @canany(['admin','category'])
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-th"></i> <span>QL Danh mục</span> <i
@@ -230,6 +232,8 @@
                             <li><a href="{{route('category.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                         </ul>
                     </li>
+                    @endcanany
+                    @can(['admin'])
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-image"></i> <span>QL Banner</span> <i
@@ -260,6 +264,7 @@
                             <li><a href="index2.html"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                         </ul>
                     </li>
+                    @endcan
                 </ul>
             </section>
             <!-- /.sidebar -->

@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
     Route::put('/profile', [AdminController::class, 'update_profile']);
     Route::get('/change_password', [AdminController::class, 'change_password'])->name('admin.change_password');
     Route::put('/change_password', [AdminController::class, 'update_password']);
-    
+    // Route::resource('category', CategoryController::class)->middleware();
     Route::resources([
         'category' => CategoryController::class,
         'product' => ProductController::class,

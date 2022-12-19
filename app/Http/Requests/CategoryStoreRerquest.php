@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\UpperCase;
+use Illuminate\Support\Facades\Gate;
+use Auth;
 
 class CategoryStoreRerquest extends FormRequest
 {
@@ -14,7 +16,12 @@ class CategoryStoreRerquest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if (Gate::any(['admin','category'], Auth::user())) {
+            return true;
+        } 
+
+        return false;
+        
     }
 
     /**

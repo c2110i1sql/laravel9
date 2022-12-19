@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
+use Auth;
 
 class CategoryUpdateRerquest extends FormRequest
 {
@@ -13,7 +15,11 @@ class CategoryUpdateRerquest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if (Gate::any(['admin','category'], Auth::user())) {
+            return true;
+        } 
+
+        return false;
     }
 
     /**

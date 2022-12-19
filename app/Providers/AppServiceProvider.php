@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
         // Paginator::useBootstrapFour(); // b4
         // truyền dữ liệu cho tất cả các view
         view()->composer('*',function($view) {
-            $cats = Category::isActive()->get();
-            $view->with(compact('cats'));
+            $catsGlobal = Category::isActive()->get();
+            $view->with(compact('catsGlobal'));
         });
     }
 }

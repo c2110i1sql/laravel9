@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryStoreRerquest;
 use App\Http\Requests\CategoryUpdateRerquest;
+use Illuminate\Support\Facades\Gate;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -16,8 +18,13 @@ class CategoryController extends Controller
      */
     public function index(Request $req)
     {
-        $cats = Category::search(10); // SELECT * FROM category
-        return view('admin.category.index', compact('cats'));
+        if (Gate::any(['admin','category'], Auth::user())) {
+            $cats = Category::search(10); // SELECT * FROM category
+            return view('admin.category.index', compact('cats'));
+        } else {
+            return abort(403);
+        }
+       
     }
 
     /**
