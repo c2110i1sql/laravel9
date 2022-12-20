@@ -4,7 +4,7 @@ use App\Models\Customer;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Auth;
+// use Auth;
 
 class HomeController extends Controller
 {
@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function check_login(Request $req)
     {
        $form_data = $req->only('email','password');
-       $check = Auth::guard('cus')->attempt($form_data, $req->has('remember'));
+       $check = auth('cus')->attempt($form_data, $req->has('remember'));
 
        if ($check) {
             return redirect()->route('home.index')->with('yes', 'Chào mừng trở lại');
@@ -50,13 +50,13 @@ class HomeController extends Controller
     }
     public function logout()
     {
-        Auth::guard('cus')->logout();
+        auth('cus')->logout();
         return redirect()->route('home.login')->with('yes', 'Đăng xuất thành công, vui lòng đăng nhập lại');
     }
 
     public function profile()
     {
-        $auth = Auth::guard('cus')->user();
+        $auth = auth('cus')->user();
         // dd ($auth);
         return view('home.profile', compact('auth'));
     }
@@ -74,6 +74,7 @@ class HomeController extends Controller
 
     public function productDetail(Product $product)
     {
+        // dd (\Str::slug($product->name));
         return view('product-detail', compact('product'));
     }
 }

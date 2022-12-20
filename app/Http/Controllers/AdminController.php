@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+// use Auth;
 use Hash;
 
 class AdminController extends Controller
@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function check_login(Request $req)
     {
        $form_data = $req->only('email','password');
-       $check = Auth::attempt($form_data, $req->has('remember'));
+       $check = auth()->attempt($form_data, $req->has('remember'));
 
        if ($check) {
             return redirect()->route('admin.index')->with('yes', 'Chào mừng trở lại');
@@ -34,13 +34,13 @@ class AdminController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        auth()->logout();
         return redirect()->route('admin.login')->with('yes', 'Đăng xuất thành công, vui lòng đăng nhập lại');
     }
 
     public function profile()
     {
-        $auth = Auth::user();
+        $auth = auth()->user();
         // dd ($auth);
         return view('admin.profile', compact('auth'));
     }
@@ -48,7 +48,7 @@ class AdminController extends Controller
 
     public function update_profile(Request $req)
     {
-        $auth = Auth::user();
+        $auth = auth()->user();
         $req->validate([
             'name' => 'required',
             'email' => [
@@ -82,7 +82,7 @@ class AdminController extends Controller
 
     public function update_password(Request $req)
     {
-        $auth = Auth::user();
+        $auth = auth()->user();
         $req->validate([
             'old_password' => [
                 'required',
@@ -101,7 +101,7 @@ class AdminController extends Controller
         ];
         
         if ($auth->update($form_data)) {
-            Auth::logout();
+            auth()->logout();
             return redirect()->route('admin.login')->with('yes', 'Cập nhật mật khẩu thành công');
         }
 

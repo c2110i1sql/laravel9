@@ -45,7 +45,7 @@
                                     <li class="has-dropdown">
                                         <a href="">Shop</a>
                                         <ul class="sub-menu">
-                                            @foreach($cats as $cat)
+                                            @foreach($catsGlobal as $cat)
                                             <li><a href="{{route('home.category', $cat->id)}}">{{$cat->name}}</a></li>
                                             @endforeach
                                         </ul>

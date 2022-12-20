@@ -17,9 +17,9 @@
                     <div class="swiper-slide">
                         <div class="tpproduct p-relative">
                             <div class="tpproduct__thumb p-relative text-center">
-                                <a href="shop-details-4.html"><img
+                                <a href="{{link_detail($item)}}"><img
                                         src="{{url('')}}/uploads/{{$item->image}}" alt=""></a>
-                                <a class="tpproduct__thumb-img" href="shop-details-4.html"><img
+                                <a class="tpproduct__thumb-img" href="{{link_detail($item)}}"><img
                                         src="{{url('')}}/uploads/{{$item->image}}" alt=""></a>
                                 <div class="tpproduct__info bage">
                                     <span class="tpproduct__info-discount bage__discount">-50%</span>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="tpproduct__hover-text">
                                 <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                    <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
+                                    <a class="tp-btn-2" href="{{link_detail($item)}}">Add to cart</a>
                                 </div>
                                 <div class="tpproduct__descrip">
                                     <ul>

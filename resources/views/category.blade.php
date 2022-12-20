@@ -300,19 +300,19 @@
                                 <div class="col">
                                     <div class="tpproduct p-relative mb-20">
                                         <div class="tpproduct__thumb p-relative text-center">
-                                            <a href="{{route('home.productDetail', $prod->id)}}"><img src="{{url('uploads')}}/{{$prod->image}}" alt=""></a>
-                                            <a class="tpproduct__thumb-img" href="shop-details-grid.html"><img
+                                            <a href="{{link_detail($prod)}}"><img src="{{url('uploads')}}/{{$prod->image}}" alt=""></a>
+                                            <a class="tpproduct__thumb-img" href="{{link_detail($prod)}}l"><img
                                                     src="{{url('uploads')}}/{{$prod->image}}" alt=""></a>
                                             <div class="tpproduct__info bage">
                                                 <span class="tpproduct__info-discount bage__discount">-50%</span>
                                                 <span class="tpproduct__info-hot bage__hot">HOT</span>
                                             </div>
                                             <div class="tpproduct__shopping">
-                                                <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i
+                                                <a class="tpproduct__shopping-wishlist" href="{{link_detail($prod)}}"><i
                                                         class="icon-heart icons"></i></a>
                                                 <a class="tpproduct__shopping-wishlist" href="#"><i
                                                         class="icon-layers"></i></a>
-                                                <a class="tpproduct__shopping-cart" href="{{route('home.productDetail', $prod->id)}}"><i
+                                                <a class="tpproduct__shopping-cart" href="{{link_detail($prod)}}"><i
                                                         class="icon-eye"></i></a>
                                             </div>
                                         </div>
@@ -321,7 +321,7 @@
                                                 <a href="">{{$cat->name}}</a>,
                                             </span>
                                             <h4 class="tpproduct__title">
-                                                <a href="{{route('home.productDetail', $prod->id)}}">{{$prod->name}}</a>
+                                                <a href="{{link_detail($prod)}}">{{$prod->name}}</a>
                                             </h4>
                                             
                                             <div class="tpproduct__price">

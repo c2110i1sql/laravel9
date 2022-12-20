@@ -16,7 +16,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $req)
+    public function index()
     {
         if (Gate::any(['admin','category'], Auth::user())) {
             $cats = Category::search(10); // SELECT * FROM category

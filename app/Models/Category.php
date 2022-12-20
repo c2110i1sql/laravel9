@@ -18,8 +18,8 @@ class Category extends Model
 
     public function scopeSearch($query, $limit = 5)
     {
-        if (request()->keyword) {
-            $query = $query->where('name','like','%'.request()->keyword.'%')
+        if (request('keyword')) {
+            $query = $query->where('name','like','%'.request('keyword').'%')
                     ->orderBy('id','DESC');
         }
 
