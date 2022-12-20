@@ -35,8 +35,9 @@ Route::group(['prefix' => ''], function() {
 Route::group(['prefix' => 'cart'], function() {
     Route::get('/view', [CartController::class, 'view'])->name('cart.view');
     Route::get('/add/{product}', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::get('/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/delete/{id}', [CartController::class, 'delete'])->name('cart.delete');
+    Route::get('/update/{id}/{quantity?}', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/update-all', [CartController::class, 'updateAll'])->name('cart.updateAll');
     Route::get('/clear', [CartController::class, 'clear'])->name('cart.clear');
     Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 });

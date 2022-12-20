@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use App\Models\Category;
+use App\Helper\Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,7 +32,8 @@ class AppServiceProvider extends ServiceProvider
         // truyền dữ liệu cho tất cả các view
         view()->composer('*',function($view) {
             $catsGlobal = Category::isActive()->get();
-            $view->with(compact('catsGlobal'));
+            $cart = new Cart();
+            $view->with(compact('catsGlobal','cart'));
         });
     }
 }

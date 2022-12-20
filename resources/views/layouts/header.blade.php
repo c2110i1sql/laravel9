@@ -69,7 +69,7 @@
                             </div>
                             <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                                 <button><i><img src="{{url('')}}/assets/img/icon/cart-1.svg" alt=""></i>
-                                    <span>5</span>
+                                    <span>{{$cart->totalQuantity}}</span>
                                 </button>
                             </div>
                         </div>
@@ -109,69 +109,32 @@
             <div class="tpcart__product">
                 <div class="tpcart__product-list">
                     <ul>
+                        @foreach($cart->items as $item)
                         <li>
                             <div class="tpcart__item">
                                 <div class="tpcart__img">
-                                    <img src="{{url('')}}/assets/img/product/products1-min.jpg" alt="">
+                                    <img src="{{url('uploads')}}/{{$item->image}}" alt="">
                                     <div class="tpcart__del">
-                                        <a href="#"><i class="icon-x-circle"></i></a>
+                                        <a href="{{route('cart.delete', $item->id)}}"><i class="icon-x-circle"></i></a>
                                     </div>
                                 </div>
                                 <div class="tpcart__content">
-                                    <span class="tpcart__content-title"><a href="shop-details.html">Stacy's Pita
-                                            Chips Parmesan Garlic & Herb From Nature</a>
+                                    <span class="tpcart__content-title"><a href="{{link_detail($item)}}">{{$item->name}}</a>
                                     </span>
                                     <div class="tpcart__cart-price">
-                                        <span class="quantity">1 x</span>
-                                        <span class="new-price">$162.80</span>
+                                        <span class="quantity">{{$item->quantity}} x</span>
+                                        <span class="new-price">${{$item->price}} = ${{$item->price * $item->quantity}}</span>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="tpcart__item">
-                                <div class="tpcart__img">
-                                    <img src="{{url('')}}/assets/img/product/products12-min.jpg" alt="">
-                                    <div class="tpcart__del">
-                                        <a href="#"><i class="icon-x-circle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="tpcart__content">
-                                    <span class="tpcart__content-title"><a href="shop-details.html">Banana,
-                                            Beautiful Skin, Good For Health 1Kg</a>
-                                    </span>
-                                    <div class="tpcart__cart-price">
-                                        <span class="quantity">1 x</span>
-                                        <span class="new-price">$138.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tpcart__item">
-                                <div class="tpcart__img">
-                                    <img src="{{url('')}}/assets/img/product/products3-min.jpg" alt="">
-                                    <div class="tpcart__del">
-                                        <a href="#"><i class="icon-x-circle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="tpcart__content">
-                                    <span class="tpcart__content-title"><a href="shop-details.html">Quaker Popped
-                                            Rice Crisps Snacks Chocolate</a>
-                                    </span>
-                                    <div class="tpcart__cart-price">
-                                        <span class="quantity">1 x</span>
-                                        <span class="new-price">$162.8</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="tpcart__checkout">
                     <div class="tpcart__total-price d-flex justify-content-between align-items-center">
                         <span> Subtotal:</span>
-                        <span class="heilight-price"> $300.00</span>
+                        <span class="heilight-price"> ${{$cart->totalPrice}}</span>
                     </div>
                     <div class="tpcart__checkout-btn">
                         <a class="tpcart-btn mb-10" href="{{route('cart.view')}}">View Cart</a>

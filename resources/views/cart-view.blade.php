@@ -26,7 +26,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="#">
+                <form action="{{route('cart.updateAll')}}" method="post">
+                    @csrf
                     <div class="table-content table-responsive">
                         <table class="table">
                             <thead>
@@ -40,54 +41,33 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($cart->items as $item)
                                 <tr>
+                                    <input type="hidden" name="id[]" value="{{$item->id}}">
                                     <td class="product-thumbnail">
                                         <a href="shop-details.html">
-                                            <img src="assets/img/product/products19-min.jpg" alt="">
+                                            <img src="{{url('uploads')}}/{{$item->image}}" alt="">
                                         </a>
                                     </td>
                                     <td class="product-name">
-                                        <a href="shop-details.html">Summer Breakfast For Healthy Morning</a>
+                                        <a href="shop-details.html">{{$item->name}}</a>
                                     </td>
                                     <td class="product-price">
-                                        <span class="amount">$130.00</span>
+                                        <span class="amount">${{$item->price}}</span>
                                     </td>
                                     <td class="product-quantity">
                                         <span class="cart-minus">-</span>
-                                        <input class="cart-input" type="text" value="1">
+                                        <input class="cart-input" type="text" name="quantity[]" value="{{$item->quantity}}">
                                         <span class="cart-plus">+</span>
                                     </td>
                                     <td class="product-subtotal">
-                                        <span class="amount">$130.00</span>
+                                        <span class="amount">${{$item->price * $item->quantity}}</span>
                                     </td>
                                     <td class="product-remove">
-                                        <a href="#"><i class="fa fa-times"></i></a>
+                                        <a href="{{route('cart.delete', $item->id)}}"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="shop-details.html">
-                                            <img src="assets/img/product/products20-min.jpg" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a href="shop-details.html">The Best Great Benefits Of Fresh Beef</a>
-                                    </td>
-                                    <td class="product-price">
-                                        <span class="amount">$120.50</span>
-                                    </td>
-                                    <td class="product-quantity">
-                                        <span class="cart-minus">-</span>
-                                        <input class="cart-input" type="text" value="1">
-                                        <span class="cart-plus">+</span>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="amount">$120.50</span>
-                                    </td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
+                              @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -113,8 +93,8 @@
                             <div class="cart-page-total">
                                 <h2>Cart totals</h2>
                                 <ul class="mb-20">
-                                    <li>Subtotal <span>$250.00</span></li>
-                                    <li>Total <span>$250.00</span></li>
+                                    <li>Subtotal <span>${{$cart->totalPrice}}</span></li>
+                                    <li>Total <span>${{$cart->totalPrice}}</span></li>
                                 </ul>
                                 <a href="checkout.html" class="tp-btn tp-color-btn banner-animation">Proceed to
                                     Checkout</a>
