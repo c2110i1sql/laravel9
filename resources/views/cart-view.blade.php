@@ -96,7 +96,7 @@
                                     <li>Subtotal <span>${{$cart->totalPrice}}</span></li>
                                     <li>Total <span>${{$cart->totalPrice}}</span></li>
                                 </ul>
-                                <a href="checkout.html" class="tp-btn tp-color-btn banner-animation">Proceed to
+                                <a href="{{route('cart.checkout')}}" class="tp-btn tp-color-btn banner-animation">Proceed to
                                     Checkout</a>
                             </div>
                         </div>
