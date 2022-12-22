@@ -61,10 +61,39 @@
             </div>
             <div class="col-lg-6">
                 <div class="tpcontactmap mb-30">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d56215.718841453985!2d-0.19959027821222705!3d51.48739183082915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1slondon%20eye!5e0!3m2!1sen!2sbd!4v1656749326947!5m2!1sen!2sbd"
-                        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        width="600" height="450"></iframe>
+                <div class="tptrack__product mb-40">
+                    <form action="" method="post">
+                        @csrf
+                        <div class="tptrack__content grey-bg">
+                           
+                            <div class="tptrack__id mb-10">
+
+                                <span><i class="fal fa-user"></i></span>
+                                <input name="name" placeholder="Username / email address">
+                            </div>
+                            <div class="tptrack__id mb-10">
+
+                                <span><i class="fal fa-user"></i></span>
+                                <input type="email" name="email" placeholder="Username / email address">
+                            </div>
+                            <div class="tptrack__email mb-10">
+                                <span><i class="fal fa-key"></i></span>
+                                <input type="text"  name="subject" placeholder="subject">
+
+                            </div>
+                            <div class="tptrack__email mb-10">
+                                <span><i class="fal fa-key"></i></span>
+                                <textarea name="content" class="form-control" placeholder="content"></textarea>
+
+                            </div>
+                        
+                            <div class="tptrack__btn">
+                                <button class="tptrack__submition active">Send contact<i
+                                        class="fal fa-long-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 </div>
             </div>
         </div>

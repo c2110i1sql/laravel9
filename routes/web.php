@@ -30,6 +30,7 @@ Route::group(['prefix' => ''], function() {
     Route::get('/profile', [HomeController::class, 'profile'])->name('home.profile')->middleware('cus');
     Route::post('/login', [HomeController::class, 'check_login']);
     Route::post('/register', [HomeController::class, 'check_register'])->name('home.register');
+    Route::post('/contact-us', [HomeController::class, 'send_contact']);
 });
 
 Route::group(['prefix' => 'cart'], function() {

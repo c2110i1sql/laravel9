@@ -1,10 +1,11 @@
 <?php 
 namespace App\Http\Controllers;
 use App\Models\Customer;
+use App\Mail\ContactMail;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-// use Auth;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -76,5 +77,19 @@ class HomeController extends Controller
     {
         // dd (\Str::slug($product->name));
         return view('product-detail', compact('product'));
+    }
+
+
+    public function send_contact()
+    {
+        $name = request('name');
+        $email = request('email');
+        $subject = request('subject');
+        $content = request('content');
+        
+        $send = Mail::to($email)->send(new ContactMail($name, $content, $subject));
+
+        dd ($send);
+
     }
 }
