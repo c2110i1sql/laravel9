@@ -31,6 +31,7 @@ Route::group(['prefix' => ''], function() {
     Route::post('/login', [HomeController::class, 'check_login']);
     Route::post('/register', [HomeController::class, 'check_register'])->name('home.register');
     Route::post('/contact-us', [HomeController::class, 'send_contact']);
+    Route::get('/verify-account/{token}', [HomeController::class, 'verifyAccount'])->name('home.verify_account');
 });
 
 Route::group(['prefix' => 'cart'], function() {
