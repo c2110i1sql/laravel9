@@ -61,24 +61,22 @@
                                     </div>
                                     <div class="col-md-6">
                                        <div class="country-select">
-                                          <label>Country <span class="required">*</span></label>
+                                          <label>Phương thức vận chuyển <span class="required">*</span></label>
                                           <select name="shipping_method">
                                                 <option value="">Phương thức thanh toán</option>
                                                 <option value="Chuyển Fast nhanh">Chuyển Fast nhanh</option>
                                                 <option value="Giao hàng trực tiếp">Giao hàng trực tiếp</option>
                                           </select>
-                                          <div class="nice-select" tabindex="0"><span class="current">United States</span><ul class="list"><li data-value="volvo" class="option selected">United States</li><li data-value="saab" class="option">Algeria</li><li data-value="mercedes" class="option">Canada</li><li data-value="audi" class="option">Germany</li><li data-value="audi2" class="option">England</li><li data-value="audi3" class="option">Qatar</li><li data-value="audi5" class="option">Dominican Republic</li></ul></div>
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="country-select">
-                                          <label>Country <span class="required">*</span></label>
+                                          <label>Phương thức thanh toán <span class="required">*</span></label>
                                           <select name="payment_method">
                                                 <option value="">Phương thức thanh toán</option>
                                                 <option value="Thanh toán online">Thanh toán online</option>
                                                 <option value="thanh toán khi nhận hàng">thanh toán khi nhận hàng</option>
                                           </select>
-                                          <div class="nice-select" tabindex="0"><span class="current">United States</span><ul class="list"><li data-value="volvo" class="option selected">United States</li><li data-value="saab" class="option">Algeria</li><li data-value="mercedes" class="option">Canada</li><li data-value="audi" class="option">Germany</li><li data-value="audi2" class="option">England</li><li data-value="audi3" class="option">Qatar</li><li data-value="audi5" class="option">Dominican Republic</li></ul></div>
                                        </div>
                                     </div>
                                     <div class="col-md-12">

@@ -32,6 +32,7 @@ Route::group(['prefix' => ''], function() {
     Route::post('/register', [HomeController::class, 'check_register'])->name('home.register');
     Route::post('/contact-us', [HomeController::class, 'send_contact']);
     Route::get('/verify-account/{token}', [HomeController::class, 'verifyAccount'])->name('home.verify_account');
+   
 });
 
 Route::group(['prefix' => 'cart'], function() {
@@ -43,6 +44,7 @@ Route::group(['prefix' => 'cart'], function() {
     Route::get('/clear', [CartController::class, 'clear'])->name('cart.clear');
     Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('cus');
     Route::post('/checkout', [CartController::class, 'order_checkout'])->middleware('cus');
+    Route::get('/verify-order/{token}', [CartController::class, 'verifyOrder'])->name('cart.verify_order');
 });
 
 

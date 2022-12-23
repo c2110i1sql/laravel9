@@ -18,6 +18,26 @@ class Order extends Model
         'shipping_method',
         'payment_method',
         'account_id',
-        'status'
+        'status',
+        'token'
     ];
+
+    public function cus()
+    {
+        return $this->hasOne(Customer::class, 'id', 'account_id');
+    }
+
+    public function details()
+    {
+        return $this->hasMany(OrderDetail::class, 'order_id','id');
+    }
+
+    public function totalPrice()
+    {
+        $total = 0; 
+        foreach($this->details as $item) {
+            $total += $item->price * $item->quantity;
+        }
+        return $total;
+    }
 }
